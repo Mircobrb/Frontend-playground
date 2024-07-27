@@ -25,14 +25,20 @@
                             container.innerHTML = data.map(item => `
                             
                                 <a class="card card-compact bg-base-200 hover:bg-base-300 transition-all duration-200 hover:-translate-y-1" href="ThinkertoyPage.html/${item.name}">
+                                    
+                                    <div class="card-body flex-row justify-between">
+                                        <div class="">
+                                            <h2 class="card-title">${item.title}</h2>
+                                            <p class="text-base">${item.description}</p>
+                                        </div>
+                                        ${item.svg}
+                                    </div>
+
                                     <div class="p-2">
                                         <div class="badge">${item.technique}</div>
-                                        <div class="badge">Linear</div>
                                     </div>
-                                    <div class="card-body">
-                                        <h2 class="card-title">${item.title}</h2>
-                                        <p class="text-base">${item.description}</p>
-                                    </div>
+                                    
+                                    
                                 </a>
                             `).join('');
                         })
