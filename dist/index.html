@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="fantasy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,43 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="btn btn-primary">hello</div>
+    <section>
+
+        <div class="flex flex-col gap-6 p-6">
+            <div class="prose max-w-4xl flex-grow">
+                <h1>Thinkertoys</h1>
+                <p>99 elements</p>
+            </div>
+            <div id="cards-container" class="not-prose grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+
+                <script>
+                    fetch('thinkertoys.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const container = document.getElementById('cards-container');
+            
+                            container.innerHTML = data.map(item => `
+                            
+                                <a class="card card-compact bg-base-200 hover:bg-base-300 transition-all duration-200 hover:-translate-y-1" href="ThinkertoyPage.html/${item.name}">
+                                    <div class="p-2">
+                                        <div class="badge">${item.technique}</div>
+                                        <div class="badge">Linear</div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h2 class="card-title">${item.title}</h2>
+                                        <p class="text-base">${item.description}</p>
+                                    </div>
+                                </a>
+                            `).join('');
+                        })
+                        .catch(error => console.error('Error loading JSON data:', error));
+                </script>
+
+
+            </div>
+        </div>
+
+    </section>
     
 </body>
 </html>
